@@ -67,6 +67,13 @@ cd VideoChatbot
 
 ## 🎬 Demo Script
 
+### Available Test Videos
+The project includes **2 sample videos** for testing and demonstration:
+- **`pursuitofhappiness.mp4`** - Drama film scene with dialogue and emotional content
+- **`tedtalk.mp4`** - Educational presentation with speaker and visual aids
+
+These videos are located in the `videos/` directory and can be used to test all features of the application.
+
 ### What the Demo Shows
 The `demo.py` script provides a **complete demonstration** of the video processing pipeline, showcasing all the core features required by the assignment:
 
@@ -413,6 +420,58 @@ Q: "Summarize the key points"
 3. Make your changes
 4. Run tests
 5. Submit a pull request
+
+## 🚀 Possible Improvements & Future Enhancements
+
+Given more development time, several key improvements could significantly enhance the application's capabilities:
+
+### 🧠 **Advanced LLM Integration**
+- **Better Image Extraction Models**: Implement more sophisticated computer vision models like GPT-4V or Claude Vision for more accurate scene understanding
+- **Multi-modal LLMs**: Integrate models that can simultaneously process video, audio, and text for more coherent analysis
+- **Specialized Video LLMs**: Use models specifically trained on video content for better temporal understanding
+
+### 👥 **Speaker Identification & Separation**
+- **Speaker Diarization**: Implement AI models to automatically identify and separate different speakers in conversations
+- **Voice Recognition**: Add capability to recognize specific individuals across multiple videos
+- **Speaker-specific Summaries**: Generate separate summaries for each participant in discussions or interviews
+
+### 🎯 **Enhanced Content Analysis**
+- **Emotion Detection**: Analyze facial expressions and voice tone to detect emotional states
+- **Action Recognition**: Implement advanced models to identify specific actions and activities in videos
+- **Object Tracking**: Track objects and people across video frames for better continuity understanding
+- **Scene Segmentation**: Automatically detect scene changes and topic transitions
+
+### 🔍 **Improved Search & Retrieval**
+- **Semantic Search**: Implement more sophisticated semantic search using advanced embedding models
+- **Temporal Queries**: Enable time-based queries like "What happened before/after X event?"
+- **Cross-video Search**: Search across multiple videos simultaneously
+- **Visual Similarity Search**: Find visually similar scenes across different videos
+
+### 📊 **Analytics & Insights**
+- **Content Analytics**: Provide detailed statistics about video content (speaking time, topics covered, etc.)
+- **Trend Analysis**: Identify patterns and trends across multiple videos
+- **Automatic Tagging**: Generate relevant tags and categories automatically
+- **Content Moderation**: Implement automatic detection of inappropriate content
+
+### 🎨 **User Experience Enhancements**
+- **Interactive Timeline**: Visual timeline with clickable highlights and thumbnails
+- **Real-time Processing**: Stream processing for live video analysis
+- **Mobile Application**: Native mobile apps for iOS and Android
+- **Advanced Visualization**: Interactive charts and graphs for video insights
+
+### ⚡ **Performance & Scalability**
+- **GPU Acceleration**: Optimize models for GPU processing to handle larger videos
+- **Distributed Processing**: Implement distributed computing for processing multiple videos simultaneously
+- **Caching Strategies**: Advanced caching for frequently accessed content
+- **Cloud Integration**: Support for cloud storage and processing services
+
+### 🔧 **Technical Improvements**
+- **Model Fine-tuning**: Fine-tune models on domain-specific video content
+- **Batch Processing**: Process multiple videos in parallel
+- **API Rate Limiting**: Implement proper rate limiting and authentication
+- **Monitoring & Logging**: Comprehensive system monitoring and error tracking
+
+These improvements would transform the application from a functional prototype into a production-ready, enterprise-grade video analysis platform capable of handling diverse use cases and large-scale deployments.
 
 ## 📄 License
 This project is open source and available under the MIT License.
