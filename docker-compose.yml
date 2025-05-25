@@ -1,0 +1,68 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./videos:/app/videos
+      - huggingface_cache:/root/.cache/huggingface
+    environment:
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_NAME=videochat
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres
+      - GEMINI_API_KEY=AIzaSyA0SE7DQNatZqYjTAA7pF102R45EHjME74
+    deploy:
+      resources:
+        limits:
+          cpus: '4'
+          memory: 4G
+        reservations:
+          cpus: '2'
+          memory: 2G
+    depends_on:
+      - db
+    networks:
+      - app-network
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    ports:
+      - "8501:8501"
+    volumes:
+      - .:/app
+    environment:
+      - PYTHONPATH=/app
+    depends_on:
+      - backend
+    networks:
+      - app-network
+
+  db:
+    image: ankane/pgvector:latest
+    ports:
+      - "5433:5432"
+    environment:
+      - POSTGRES_DB=videochat
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - app-network
+
+volumes:
+  postgres_data:
+  huggingface_cache:
+
+networks:
+  app-network:
+    driver: bridge
