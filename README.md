@@ -1,3 +1,137 @@
+# 🎥 Video Chat Application
+
+An intelligent video analysis application that allows you to chat with your videos using AI. Upload a video and ask questions about its content, visual elements, audio transcription, or get comprehensive summaries.
+
+## ✨ Features
+
+- 🎬 **Video & Audio Processing** - Automatic extraction of visual descriptions and speech transcription
+- 🤖 **Intelligent Query Classification** - Automatically routes questions to the right data type (visual, audio, both, or summary)
+- 📝 **Comprehensive Summarization** - Pre-generated video summaries for quick overview questions
+- 🔍 **Smart Search** - Similarity-based search with gap detection for relevant results
+- 🎯 **Context-Aware Responses** - Synchronized audio-visual analysis for complete understanding
+- 🐳 **Docker Ready** - One-command deployment with all dependencies included
+
+## 🚀 Quick Start
+
+### Prerequisites
+
+- [Docker](https://docs.docker.com/get-docker/) installed and running
+- [Docker Compose](https://docs.docker.com/compose/install/) (usually included with Docker Desktop)
+
+### Installation & Running
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/Daa06/VideoChatbot.git
+   cd VideoChatbot
+   ```
+
+2. **Start the application:**
+   ```bash
+   ./run_docker.sh
+   ```
+
+3. **Access the application:**
+   - 📱 **Frontend**: http://localhost:8501
+   - 🔧 **Backend API**: http://localhost:8000
+   - 📚 **API Documentation**: http://localhost:8000/docs
+
+4. **Test the setup (optional):**
+   ```bash
+   ./test_setup.sh
+   ```
+
+### First Use
+
+1. Open http://localhost:8501 in your browser
+2. Upload a video file (MP4, AVI, MOV supported)
+3. Wait for processing to complete (1-3 minutes depending on video length)
+4. Start asking questions about your video!
+
+## 💬 Example Questions
+
+### Summary Questions
+- "What is the main topic of this video?"
+- "Summarize this video"
+- "What are the key points discussed?"
+
+### Visual Questions
+- "What is the person wearing?"
+- "Describe the scene"
+- "What objects are visible?"
+
+### Audio Questions
+- "What did they say about...?"
+- "What was mentioned regarding...?"
+- "What was the dialogue?"
+
+### Combined Questions
+- "What happened when they mentioned...?"
+- "Describe the scene when they said..."
+
+## 🛠️ Technical Stack
+
+- **Backend**: FastAPI, Python
+- **Frontend**: Streamlit
+- **Database**: PostgreSQL with pgvector
+- **AI Models**: 
+  - Vision: BLIP-2 (image captioning)
+  - Audio: Whisper (speech-to-text)
+  - LLM: Google Gemini (chat responses)
+- **Deployment**: Docker & Docker Compose
+
+## 🔧 Configuration
+
+The application uses environment variables defined in `docker-compose.yml`. Key configurations:
+
+- **Database**: PostgreSQL with vector similarity search
+- **Models**: Automatically downloaded on first run
+- **API Keys**: Gemini API key included (replace with your own for production)
+
+## 📁 Project Structure
+
+```
+VideoChatbot/
+├── src/
+│   ├── api/           # FastAPI backend
+│   ├── processors/    # Video/audio processing
+│   ├── llm/          # AI model integrations
+│   ├── database/     # Database management
+│   └── frontend/     # Streamlit UI
+├── config/           # Configuration files
+├── docker-compose.yml
+├── Dockerfile
+├── run_docker.sh     # Easy startup script
+└── README.md
+```
+
+## 🐛 Troubleshooting
+
+### Common Issues
+
+1. **Docker not running**: Make sure Docker Desktop is started
+2. **Port conflicts**: Ensure ports 8000, 8501, and 5433 are available
+3. **Memory issues**: The application requires at least 4GB RAM
+4. **First run slow**: Model downloads can take time on first startup
+
+### Getting Help
+
+1. Check the logs: `docker-compose logs backend`
+2. Test connectivity: `./test_setup.sh`
+3. Restart: `docker-compose down && ./run_docker.sh`
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test with `./test_setup.sh`
+5. Submit a pull request
+
+## 📄 License
+
+This project is open source and available under the MIT License.
+
 # Test_for_team_AI
 ## submission  
 - Submit the assignment only on Github or GitLab.  
@@ -54,7 +188,7 @@ Extend your system to allow users to **chat with a React frontend** and ask ques
 
 #### Functional Goals:
 1. Build a **Free choice frontend** that allows users to:
-   - Enter a question (e.g., *“What happened after the person got out of the car?”*)
+   - Enter a question (e.g., *"What happened after the person got out of the car?"*)
    - See answers pulled **only from the database**
 2. Build a **Python backend (FastAPI recommended)** that:
    - Accepts chat questions

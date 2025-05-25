@@ -24,6 +24,7 @@ wheels/
 venv/
 env/
 ENV/
+test_env/
 
 # Docker
 .dockerignore
@@ -63,4 +64,10 @@ Thumbs.db
 
 # Temporary files
 temp_audio.wav
-*.tmp 
+*.tmp
+
+# Test files
+test.py
+test_docker.py
+show_data.py
+start_backend.py 

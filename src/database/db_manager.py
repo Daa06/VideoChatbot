@@ -261,7 +261,9 @@ class DatabaseManager:
     def clear_all_data(self):
         """Clear all videos and highlights from the database"""
         with self.conn.cursor() as cur:
-            cur.execute("DELETE FROM highlights;")
-            cur.execute("DELETE FROM videos;")
+            # Delete in correct order to avoid foreign key constraint violations
+            cur.execute("DELETE FROM video_summaries;")  # Delete summaries first
+            cur.execute("DELETE FROM highlights;")       # Then highlights
+            cur.execute("DELETE FROM videos;")           # Finally videos
         self.conn.commit()
-        print("Database cleared: all videos and highlights removed")
+        print("Database cleared: all videos, highlights, and summaries removed")
