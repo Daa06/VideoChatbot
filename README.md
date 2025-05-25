@@ -5,6 +5,7 @@ An intelligent video analysis application that allows you to chat with your vide
 ## 📋 Table of Contents
 - [Features](#-features)
 - [Quick Start](#-quick-start)
+- [Demo Script](#-demo-script)
 - [Architecture](#-architecture)
 - [Technical Pipeline](#-technical-pipeline)
 - [Usage Examples](#-usage-examples)
@@ -63,6 +64,112 @@ cd VideoChatbot
 - 📱 Frontend: http://localhost:8501
 - 🔧 API: http://localhost:8000
 - 📚 API Docs: http://localhost:8000/docs
+
+## 🎬 Demo Script
+
+### What the Demo Shows
+The `demo.py` script provides a **complete demonstration** of the video processing pipeline, showcasing all the core features required by the assignment:
+
+#### ✅ **Video Processing in Action**
+- Real-time progress bars showing video & audio processing
+- Frame extraction with BLIP-2 visual descriptions
+- Audio transcription with Whisper speech-to-text
+- Intelligent highlight extraction using LLM
+
+#### ✅ **Database Storage with Vector Embeddings**
+- PostgreSQL + pgvector storage demonstration
+- Vector embeddings generation for similarity search
+- Timestamped highlights with descriptions
+- Automatic video summary generation
+
+#### 🔍 **Intelligent Query System**
+- Query classification (visual/audio/both/summary)
+- Vector similarity search demonstration
+- Context-aware responses with Gemini LLM
+- Multiple query types tested automatically
+
+### How to Run the Demo
+
+#### Prerequisites
+Make sure the application is running:
+```bash
+./run_docker.sh
+```
+
+#### Run the Demo
+```bash
+# From the project root directory
+docker compose exec backend python demo.py videos/your_video.mp4
+```
+
+#### Example with Sample Video
+```bash
+# Copy your video to the videos directory
+cp /path/to/your/video.mp4 videos/
+
+# Run the demo
+docker compose exec backend python demo.py videos/your_video.mp4
+```
+
+### Demo Output
+The script will show:
+
+1. **🤖 Model Initialization**
+   - Loading BLIP-2, Whisper, Gemini, and Sentence Transformers
+
+2. **🎬 Video Processing**
+   - Frame extraction and visual description generation
+   - Audio transcription with timestamp segmentation
+
+3. **🧠 LLM Highlight Extraction**
+   - Intelligent moment selection and description generation
+
+4. **💾 Database Storage**
+   - Saving highlights with vector embeddings
+   - Summary generation and storage
+
+5. **📊 Results Display**
+   - Visual descriptions table
+   - Audio segments table
+   - Generated summary preview
+
+6. **🔍 Query Testing**
+   - Automatic testing of different query types:
+     - Summary: "What is the main topic of this video?"
+     - Visual: "What are the people wearing?"
+     - Audio: "What was said about Spartans?"
+     - Combined: "What happened when they mentioned Athens?"
+
+### Expected Demo Results
+```
+📹 Visual Descriptions Stored
+┌─────────────┬─────────────────────────────────────────────┐
+│ Timestamp   │ Description                                 │
+├─────────────┼─────────────────────────────────────────────┤
+│ 0.0s        │ a man in a black shirt and a black vest... │
+│ 1.0s        │ a man with a beard and glasses looking...  │
+└─────────────┴─────────────────────────────────────────────┘
+
+🔊 Audio Segments Stored
+┌─────────────┬─────────────────────────────────────────────┐
+│ Time Range  │ Transcription                               │
+├─────────────┼─────────────────────────────────────────────┤
+│ 1.3s-4.1s   │ THAT'S A BIT OF A PROBLEM SAINT ROMAR      │
+│ 4.2s-7.2s   │ HAS IT THE ATHENIANS HAVE ALREADY TURNED   │
+└─────────────┴─────────────────────────────────────────────┘
+
+📝 Generated Summary
+This video appears to be a dramatic scene from a historical 
+film, featuring dialogue about ancient Greek politics...
+```
+
+### Demo Features Demonstrated
+- ✅ **OOP Architecture**: Clean separation of concerns
+- ✅ **PostgreSQL + pgvector**: Vector similarity search
+- ✅ **LLM Integration**: Gemini for chat and summaries
+- ✅ **Docker Setup**: Containerized environment
+- ✅ **Real-time Processing**: Progress indicators
+- ✅ **Multi-modal Analysis**: Video + Audio processing
 
 ## 🏗️ Architecture
 

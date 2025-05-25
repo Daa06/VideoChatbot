@@ -26,6 +26,7 @@ COPY src/processors ./src/processors
 COPY src/llm ./src/llm
 COPY src/database ./src/database
 COPY config ./config
+COPY demo.py .
 
 # Expose port
 EXPOSE 8000
